@@ -4,6 +4,7 @@ from discord.ext import commands
 import asyncio
 from kuplParse import kuplinov
 
+import datetime
 import config
 
 sg = kuplinov()
@@ -22,16 +23,16 @@ async def postTest(wait_for):
     while True:
         await asyncio.sleep(wait_for)
         new_videos = sg.new_games()
-        if(new_videos):
+        now = datetime.datetime.now()
+        if(new_videos and now.hour == 22):
             new_videos.reverse()
             for ng in new_videos:
                 try:
                     await client.get_channel(config.Post_Channel).send("Новый видосик у Куплинова: \n"+'https://www.youtube.com/watch?v='+ng)
                 except Exception as error:
-                    print(error)    
+                    print(error)                
 
-                sg.update_lastkey(ng)  
 # RUN
 loop = asyncio.get_event_loop()
-loop.create_task(postTest(1500))
-client.run(config.TOKEN + 'HxdA')
+loop.create_task(postTest(3600))
+client.run(config.TOKEN)
