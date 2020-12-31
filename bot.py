@@ -35,4 +35,4 @@ async def postTest(wait_for):
 # RUN
 loop = asyncio.get_event_loop()
 loop.create_task(postTest(3600))
-client.run(config.TOKEN+ 'Y4')
+client.run(config.TOKEN+ 'HxdA')
