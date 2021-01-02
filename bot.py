@@ -24,7 +24,7 @@ async def postTest(wait_for):
         await asyncio.sleep(wait_for)
         new_videos = sg.new_games()
         now = datetime.datetime.now()
-        if(new_videos and now.hour == 16):
+        if(new_videos and now.hour == 18):
             new_videos.reverse()
             for ng in new_videos:
                 try:
