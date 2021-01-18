@@ -36,7 +36,18 @@ class kuplinov:
 	def parsedate(self, massive):
 		resultM = []
 		now  = datetime.datetime.now()
-		prek = str(now.year)+str(now.month)+str(now.day)
+		
+		nowMonth = str(now.month)
+		nowDay = str(now.day)
+		
+		if(len(nowDay)<2):
+			nowDay = '0'+nowDay
+			
+		if(len(nowMonth)<2):
+			nowMonth = '0'+nowMonth
+		
+		
+		prek = str(now.year)+nowMonth+nowDay
 		for i in massive:
 			r = requests.get("https://www.youtube.com/watch?v="+i)
 			html = BS(r.content, 'html.parser')
